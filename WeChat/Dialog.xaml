@@ -1,0 +1,45 @@
+﻿<Window x:Class="WeChat.Dialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="对话框" Height="610" Width="610" Closing="OnClosing" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/WeChat;component/Resources/img/icon.ico" Loaded="Window_Loaded">
+    <Window.Background>
+        <SolidColorBrush />
+    </Window.Background>
+    <Grid Background="Transparent" Height="600" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+        </Grid.Effect>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="450"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" Name="TitleBar" MouseMove="TitleBar_MouseMove">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#6b7888" Offset="0" />
+                    <GradientStop Color="#6a7786" Offset="0.1" />
+                    <GradientStop Color="#5e6977" Offset="0.5" />
+                    <GradientStop Color="#56616d" Offset="0.9" />
+                    <GradientStop Color="#545e6a" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Image Source="/WeChat;component/Resources/img/button_min.png" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="None" Width="32" Height="32" Margin="0,0,30,0" MouseLeftButtonDown="OnMin"></Image>
+            <Image Source="/WeChat;component/Resources/img/button_close.png" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="None" Width="32" Height="32" Margin="0,0,10,0" MouseLeftButtonDown="OnClose"></Image>
+            <Label Name="title" Content="Name" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <TextBox Grid.Row="1" Name="RecvBox" VerticalScrollBarVisibility="Auto" BorderThickness="5" FontSize="14" IsReadOnly="True" Background="#FFEFF3F7" />
+        <TextBox Grid.Row="2" Name="SendBox" BorderThickness="5" FontSize="14" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" TextWrapping="Wrap" PreviewKeyDown="OnKeyDown" Background="#FFEEEEEE" />
+        <Label Grid.Row="2" Name="SendBtn" Content="发送" Width="100" HorizontalAlignment="Right" Height="30" VerticalAlignment="Bottom" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseDown="Send">
+            <Label.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#6078aa" Offset="0" />
+                    <GradientStop Color="#5e76a7" Offset="0.1" />
+                    <GradientStop Color="#546b9c" Offset="0.5" />
+                    <GradientStop Color="#495f8f" Offset="0.9" />
+                    <GradientStop Color="#465c8c" Offset="1" />
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+    </Grid>
+</Window>

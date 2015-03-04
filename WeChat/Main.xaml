@@ -1,0 +1,89 @@
+﻿<Window x:Class="WeChat.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="微信" Height="630" Width="310" FontSize="14" WindowStyle="None" AllowsTransparency="True" Icon="/WeChat;component/Resources/img/icon.ico" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <SolidColorBrush />
+    </Window.Background>
+    <Grid Background="Transparent" Height="620" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+        </Grid.Effect>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" Name="TitleBar" MouseMove="TitleBar_MouseMove">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#6b7888" Offset="0" />
+                    <GradientStop Color="#6a7786" Offset="0.1" />
+                    <GradientStop Color="#5e6977" Offset="0.5" />
+                    <GradientStop Color="#56616d" Offset="0.9" />
+                    <GradientStop Color="#545e6a" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Image Height="60" HorizontalAlignment="Left" Name="myhead" Stretch="Fill" Width="60" Margin="9,-20,0,0" />
+            <!--
+            <Image Margin="9,-26,0,0" Source="/WeChat;component/img/border_myprofile_avatar.png" HorizontalAlignment="Left" Stretch="None" />
+            -->
+            <Label Margin="78,10,0,0" Name="myname" Content="Name" Foreground="White" FontSize="15" />
+            <Image Source="/WeChat;component/Resources/img/button_min.png" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="None" Width="32" Height="32" Margin="0,0,30,0" MouseLeftButtonDown="OnMin"></Image>
+            <Image Source="/WeChat;component/Resources/img/button_close.png" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="None" Width="32" Height="32" Margin="0,0,10,0" MouseLeftButtonDown="OnClose"></Image>
+        </Grid>
+        <Grid Grid.Row="2" HorizontalAlignment="Stretch">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#eef2f5" Offset="0" />
+                    <GradientStop Color="#eef2f5" Offset="0.1" />
+                    <GradientStop Color="#eef1f4" Offset="0.3" />
+                    <GradientStop Color="#e7ebee" Offset="0.5" />
+                    <GradientStop Color="#e1e4e8" Offset="0.7" />
+                    <GradientStop Color="#d4d8dc" Offset="0.9" />
+                    <GradientStop Color="#d2d5d9" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="149"></ColumnDefinition>
+                <ColumnDefinition Width="2"></ColumnDefinition>
+                <ColumnDefinition Width="149"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Image MouseDown="ChatBtn_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/WeChat;component/Resources/img/button_chat.png" Stretch="None"></Image>
+            </Grid>
+            <Border Grid.Column="1" Width="2" Height="15" Background="#7E7E7E" HorizontalAlignment="Center"></Border>
+            <Grid Grid.Column="2">
+                <Image MouseDown="ContactBtn_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/WeChat;component/Resources/img/button_contact.png" Stretch="None"></Image>
+            </Grid>
+        </Grid>
+        <ListBox Grid.Row="3" Name="listbox" ItemsSource="{Binding}" MouseDoubleClick="OpenDialog" Background="WhiteSmoke" BorderBrush="#FFC9CED3">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Resources>
+                        <LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#8794a7" Offset="0" />
+                            <GradientStop Color="#8592a5" Offset="0.1" />
+                            <GradientStop Color="#7a869c" Offset="0.5" />
+                            <GradientStop Color="#737f95" Offset="0.9" />
+                            <GradientStop Color="#717d93" Offset="1" />
+                        </LinearGradientBrush>
+                    </Style.Resources>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" ></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding HeadImgUrl, Converter={StaticResource ImagePathConverter}, IsAsync=True}" Stretch="Fill" Margin="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{Binding DisplayName}" Margin="4,4,0,0" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

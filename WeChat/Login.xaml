@@ -1,0 +1,17 @@
+﻿<Window x:Class="WeChat.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="微信" Height="550" Width="400" WindowStartupLocation="CenterScreen" Icon="/WeChat;component/Resources/img/icon.ico" Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="301"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="3" Name="bg_universal" Stretch="Fill" Source="/WeChat;component/Resources/img/bg_universal.png" />
+        <Image Grid.Row="0" HorizontalAlignment="Center" Name="logo_login" Stretch="None" VerticalAlignment="Center" Source="/WeChat;component/Resources/img/logo_login.png"/>
+        <Image Grid.Row="1" Height="301" HorizontalAlignment="Center" Name="qrcode" Stretch="Fill" VerticalAlignment="Top" Width="301" />
+        <Label Grid.Row="2" HorizontalAlignment="Center" Name="login_info" VerticalAlignment="Center" FontSize="15" Foreground="#FFDDDDDD" Content="正在载入..." FontWeight="Normal" />
+    </Grid>
+</Window>
